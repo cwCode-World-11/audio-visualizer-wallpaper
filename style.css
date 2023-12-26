@@ -1,0 +1,222 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.1s ease;
+}
+@font-face {
+    font-family: "integral";
+    src: url("./Asset/Font/Fontspring-DEMO-integralcf-bold.otf");
+}
+@font-face{
+    font-family: "normalFont";
+    src: url("./Asset/Font/Roboto-Regular.ttf");
+}
+
+body{
+    background-color: rgb(48, 24, 73);
+    color: rgb(238, 238, 238);
+    font-family: "normalFont";
+    background-repeat:no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+h2{
+    font-family: "integral";
+    text-align: center;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 1px -1px 0px rgb(0 0 0 / 50%);
+}
+
+.container{
+    width: 400px;
+    height:98%;
+    background-color: aqua;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    overflow: auto;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 5;
+    /* filter: blur(5px) brightness(0.4) contrast(200%) drop-shadow(16px 16px 20px blue) grayscale(50%) hue-rotate(90deg) invert(75%) opacity(25%) saturate(30%) sepia(60%); */
+        /* filter: url("filters.svg#filter-id"); */
+}
+
+.container::-webkit-scrollbar{
+    width: 5px;
+    border-radius: 10px;
+
+}
+.container::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: rgb(100, 100, 100);
+}
+.container::-webkit-scrollbar-thumb{
+    background-color: rgb(200, 200, 200);
+    border-radius: 50px;
+}
+.container::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(68, 68, 68);
+}
+
+.mainTable{
+    /* transform: scale(0.2); */
+    width: 100%;
+    padding: 1em;
+    /* border: 1px solid black; */
+    /* border-collapse: collapse; */
+}
+td{
+    /* border: 1px solid black; */
+    padding: .5em;
+    max-width: 0px;
+    overflow: hidden;
+    /* background-color: aqua; */
+}
+.tabContainer>div:not(.activeTab),.hide{
+    display:none;
+    opacity: 0;
+    cursor: none;
+    visibility: hidden;
+}
+
+.activeTab{
+    padding: 1em;
+}
+
+#bgColorPalette{
+    border: none;
+    background: none;
+    padding: 0%;
+    margin: 0%;
+    width: 18.7%;
+}
+#bgColorPalette::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+#bgColorPalette::-webkit-color-swatch {
+	border: none;
+}
+
+/* #audio1::-webkit-media-controls-timeline{
+    background-color: blue;
+    width: 20em;
+}
+#audio1::-webkit-media-controls-panel{
+    background-color: rgb(255, 255, 0);
+}
+#audio1{
+    background-color: aqua;
+
+}
+
+#audio1::-webkit-media-controls-current-time-display,
+#audio1::-webkit-media-controls-time-remaining-display{
+    display: none;
+}
+#audio1::-webkit-media-controls-volume-slider{
+    background-color: rgb(81, 255, 0);
+} */
+
+.audioPlayerDivEle{
+    position: absolute;
+    z-index: 3;
+    /* background-color: rgb(85, 85, 85); */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 1em;
+    width: fit-content;
+    /* font-size:large; */
+}
+.progressBar{
+    width: 100%;
+    height: .1em;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.seekBG{
+    height: .1em;
+    background-color: rgb(255, 0, 0);
+    width: 50%;
+}
+.timeAndProgressBar,.playBtnAndSongName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeAndProgressBar>span{
+    margin: 0em 1em;
+}
+
+.playBtnAndSongName{
+    height: 1em;
+    margin-top: 1em;
+    /* background-color:rgb(0, 0, 0); */
+}
+.playBtnAndSongName>.songNameDiv{
+    margin: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.2em;
+    line-break:anywhere;
+    width: 100%;
+    white-space:nowwrap;
+}
+.thumbnail{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    transform-origin:center;
+
+}
+.thumbnail>img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    max-width: 200px;
+    transition: all 0.3s ease;
+    transform-origin:center;
+}
+.playBtn{
+    cursor: pointer;
+}
+.showControlsHide{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    display:none;
+    opacity: 0;
+    cursor: none;
+    visibility: hidden;
+}
+
+
+#showControlsOut{
+    background-color: red;
+    width: fit-content;
+    position: absolute;
+    right: 0%;
+    margin: 1em;
+    z-index: 5;
+    transition: all 1s ease;
+}
+
+.opacityHide{
+    opacity: 0.2;
+}
+
+#showControlsOut:hover{
+    opacity: 1;
+    cursor: pointer;
+}

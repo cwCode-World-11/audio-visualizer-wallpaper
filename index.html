@@ -1,0 +1,545 @@
+<html>
+
+<head>
+    <title>Audio Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./Asset/Thumbnail.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h2>Audio Visualizer Controls</h2>
+        </div>
+        <table class="mainTable">
+            <tr>
+                <td>Show Controls</td>
+                <td><input type="checkbox" class="showControls" checked></td>
+            </tr>
+            <tr>
+                <td>Sample Play (loop)</td>
+                <td><input type="checkbox" id="randomPlayEle"></td>
+            </tr>
+
+            <!-- BG////////////////////////////////////// -->
+            <tr>
+                <table style="width: 100%; ">
+                    <tr>
+                        <td><label><input type="radio" class="bgStyle" name="bgStyle" id="bgColorTabEle" value="bgColor"
+                                    checked>BG
+                                Color</label><br>
+                        </td>
+                        <td><label><input type="radio" class="bgStyle" name="bgStyle" id="bgImgTabEle"
+                                    value="bgImage">BG
+                                Image</label><br></td>
+                    </tr>
+                    <!-- BG Color -->
+                    <tr class="bgColorSec">
+                        <td colspan="2">
+                            <table class="bgColorEle" style="width: 100%;">
+                                <tr>
+                                    <td>Use Multi Color</td>
+                                    <td><input type="checkbox" id="isMulColorEle"></td>
+                                </tr>
+                                <tr class="singleColor">
+                                    <td>Single color</td>
+                                    <td><input type="color" id="singleColorValueEle"></td>
+                                </tr>
+                                <tr class="multiColor">
+                                    <td>Colors</td>
+                                    <td>
+                                        <input type="color" id="mulColorsEle">
+                                        <input type="color" id="mulColorsEle">
+                                        <input type="color" id="mulColorsEle">
+                                        <input type="color" id="mulColorsEle">
+                                        <input type="color" id="mulColorsEle">
+                                    </td>
+                                </tr>
+                                <tr class="multiColor">
+                                    <td>
+                                        <label><input type="radio" value="linear-gradient" name="mulColorProperty"
+                                                checked>Linear</label>
+                                    </td>
+                                    <td>
+                                        <label><input type="radio" value="radial-gradient"
+                                                name="mulColorProperty">Radial</label>
+                                    </td>
+                                </tr>
+                                <!-- If linear is selected -->
+                                <tr class="linearRotateRow multiColor">
+                                    <td>Rotate</td>
+                                    <td><input type="range" max="360" id="gradientRotate" min="0" value="0"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- BG Image -->
+                    <tr class="bgImageSec hide">
+                        <td colspan="2">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>Choose Image</td>
+                                    <td>
+                                        <label><input type="radio" name="presetBG" id="bgImgRadio" value="bg1"
+                                                checked>BG_01</label><br>
+                                        <label><input type="radio" name="presetBG" id="bgImgRadio"
+                                                value="bg2">BG_02</label><br>
+                                        <label><input type="radio" name="presetBG" id="bgImgRadio"
+                                                value="bg3">BG_03</label><br>
+                                        <label><input type="radio" name="presetBG" id="bgImgRadio"
+                                                value="bg4">BG_04</label><br>
+                                        <label><input type="radio" name="presetBG" id="bgImgRadio"
+                                                value="bg5">BG_05</label><br>
+                                        <label><input type="radio" name="presetBG" id="bgImgRadio"
+                                                class="customImgRadio" value="customImg">Custom
+                                            Image</label><br>
+                                    </td>
+                                </tr>
+                                <!-- If custom img select then unhide this -->
+                                <tr class="bgFileRow hide">
+                                    <td>Choose Custom Image</td>
+                                    <td>
+                                        <input type="file" id="bgChooseFile">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Opacity</td>
+                        <td><input type="range" id="bgFilterOpacity" min="0" max="1" value="1" step="1"></td>
+                    </tr>
+                </table>
+        </table>
+        <!-- Audio Controls -->
+        <!-- Eppadi ithu kulla pota correct ah table kulla varuthu nu therla -->
+        <tr>
+            <br>
+            <td colspan="2">Bar Controls <br> <br> </td>
+        </tr>
+        <tr>
+            <td>Count <br><i>(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, and
+                    32768)</i>
+            </td>
+            <td>
+                <!-- 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, and 32768. -->
+                <input type="number" class="barCount" value="32" style="width:100px"> <br>
+            </td>
+        </tr>
+        <tr>
+            <td>Width</td>
+            <td>
+                <input id="barWidthEle" type="range" value="20" min="1" max="100" step="2" /> <br>
+            </td>
+        </tr>
+        <tr>
+            <td>Additional Height</td>
+            <td>
+                <input id="barHeightEle" type="range" value="0" min="-500" max="500" step="25" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td>Round Corner</td>
+                        <td><input type="number" style="width: 50px;" id="barRoundedCornerEle" min="0" value="0"
+                                step="1"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <table style="width: 100%;">
+            <tr>
+                <td>Mirror</td>
+                <td>
+                    <span>XY </span><input type="checkbox" id="barMirXYEle" />
+                </td>
+                <td>
+                    <span>-XY </span><input type="checkbox" id="barMirMinXYEle" />
+                </td>
+                <td>
+                    <span>-X-Y </span><input type="checkbox" id="barMirMinXMinYEle" />
+                </td>
+                <td>
+                    <span>X-Y </span><input type="checkbox" id="barMirXMinYEle" />
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%;">
+            <tr>
+                <td>Position</td>
+                <td>
+                    <input style="width: 50px;" type="number" value="0" placeholder="X" id="barInitialPosX">
+                </td>
+                <td>
+                    <input style="width: 50px;" type="number" value="0" id="barInitialPosY" placeholder="Y">
+                </td>
+            </tr>
+            <table style="width: 100%;">
+                <tr>
+                    <td>Spacing</td>
+                    <td><input type="range" min="0" max="50" id="barSpacing"></td>
+                </tr>
+                <tr>
+                    <table style="width: 100%;">
+                        <td>Colors</td>
+                        <td id="barColorsTableDataEle">
+                            <!-- <input type='color' id='barColorEle' />
+                                                        <input type='color' id='barColorEle' /> -->
+                        </td>
+                        <td>
+                            <button id="barAddMoreColorEle" style="width:fit-content; padding: 10px;">
+                                <b>+</b>
+                            </button>
+                            <button style="width:fit-content; padding: 10px;" id="barSubMoreColorEle">
+                                <b>-</b>
+                            </button>
+                        </td>
+                    </table>
+                </tr>
+                <tr>
+                    <td><span style="text-decoration: underline;">Lights</span></td>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>Show Lights</td>
+                            <td>
+                                <input type="checkbox" id="circleLightShowEle" checked
+                                    onchange="toggleCheckBoxHideEle(this,document.querySelector('.circleLightControls'))">
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <table style="width: 100%;" class="circleLightControls">
+                                <tr>
+                                    <td>Number of lights</td>
+                                    <td><input type="number" style="width: 50px;" id="circleNumOfLightsXEle" value="3"
+                                            min="1" placeholder="X">
+                                    </td>
+                                    <td><input type="number" id="circleNumOfLightsYEle" style="width: 50px;" value="2"
+                                            min="1" placeholder="Y">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Colors</td>
+                                    <td id="lightColorsTableData">
+                                        <!-- <input type='color' id='circleColorEle' />
+                                                                    <input type='color' id='circleColorEle' /> -->
+                                    </td>
+                                    <td>
+                                        <button style="width:fit-content; padding: 10px;" id="circleAddMoreColor">
+                                            <b>+</b>
+                                        </button>
+                                        <button style="width:fit-content; padding: 10px;" id="circleSubMoreColor">
+                                            <b>-</b>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Light Size</td>
+                                    <td colspan="2">
+                                        <input type="number" id="circleSizeEle" step="10" placeholder="Size" value="20"
+                                            min="0" max="2000">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Position</td>
+                                    <td>
+                                        <input type="number" id="circlePositionXEle" step="10" placeholder="X"
+                                            value="20" min="0" max="2000">
+                                    </td>
+                                    <td>
+                                        <input type="number" id="circlePositionYEle" step="10" placeholder="Y"
+                                            value="20" min="0" max="2000">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Spacing</td>
+                                    <td>
+                                        <input type="number" id="circleSpacingXEle" step="10" placeholder="X" value="20"
+                                            min="-200" max="200">
+                                    </td>
+                                    <td>
+                                        <input type="number" id="circleSpacingYEle" step="10" placeholder="Y" value="20"
+                                            min="-200" max="500">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>maxInVal<br>(0 - 5000)</td>
+                                    <td colspan="2">
+                                        <input type="number" id="circleMaxInValEle" step="100" placeholder="maxInVal"
+                                            value="5000" min="-8000" max="8000">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Flicker Opacity</td>
+                                    <td colspan="2">
+                                        <input type="number" id="circleFlickerOpacityEle" step="10"
+                                            placeholder="Flicker Opacity" value="100" min="-500" max="500">
+                                    </td>
+                                </tr>
+                            </table>
+                        </tr>
+                    </table>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td>Apply Filter</td>
+                                <td>
+                                    <input type="checkbox" id="applyFilterEle"
+                                        onchange="toggleCheckBoxHideEle(this,document.querySelector('.filterProperties'))">
+                                </td>
+                            </tr>
+                            <tr class="filterProperties hide">
+                                <td colspan="2">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td colspan="2">Blur</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterBlurEle" value="0" min="0" max="50"
+                                                    step="1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Brightness</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterBrightnessEle" value="1" min="0" max="20"
+                                                    step="1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Contrast</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterContrastEle" value="1" min="0" max="5"
+                                                    step="1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Grayscale</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterGrayscaleEle" value="0" min="0" max="100"
+                                                    step="10">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Hue-Rotate</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterHueRotateEle" value="0" min="0" max="360"
+                                                    step="1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Invert</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterInvertEle" value="0" min="0" max="1"
+                                                    step="0.2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Opacity</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterOpacityEle" value="1" min="0" max="1"
+                                                    step="0.2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Saturate</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterSaturateEle" value="100" min="0" max="300"
+                                                    step="5">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Sapia</td>
+                                            <td colspan="3">
+                                                <input type="range" id="filterSapiaEle" value="0" min="0" max="200"
+                                                    step="10">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                        <tr>
+                                            <td>
+                                                Drop-Shadow
+                                            </td>
+                                            <td>
+                                                <input type="number" min="0" value="0" id="filterShadowLeftRightEle"
+                                                    style="width: 50px;" placeholder="LF">
+                                            </td>
+                                            <td>
+                                                <input type="number" min="0" value="0" id="filterShadowUpDownEle"
+                                                    style="width: 50px;" placeholder="UD">
+                                            </td>
+                                            <td>
+                                                <input type="number" min="0" value="0" id="filterShadowBlurEle"
+                                                    style="width: 50px;" placeholder="blur">
+                                            </td>
+                                            <td>
+                                                <input type="color" value="#000000" id="filterShadowColorEle" />
+                                            </td>
+                                        </tr>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            </td>
+            </tr>
+            <table style="width: 100%;">
+                <tr>
+                    <td>Player Controls</td>
+                    <td>
+                        <input type="checkbox" checked
+                            onchange="toggleCheckBoxHideEle(this,document.querySelector('.audioPlayerDivEle'))">
+                    </td>
+                </tr>
+                <tr>
+                    <table style=" width: 100%;" id="audioControlsEle">
+                        <tr>
+                            <td colspan="2">Choose song <br>If this is wallpaper?just play on system player</td>
+
+                            <td>
+                                <input type="file" id="audioFileEle">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Position</td>
+                            <td>
+                                <input type="number" id="audioPositionXEle" style="width: 100%;">
+                            </td>
+                            <td>
+                                <input type="number" id="audioPositionYEle" style="width: 100%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Scale</td>
+                            <td colspan="2">
+                                <input type="number" step="1" style="width: 5em;" value="100" id="audioScaleEleX">
+                                <input type="number" step="1" style="width: 5em;" value="100" id="audioScaleEleY">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td>Display Thumbnail</td>
+                                        <td>
+                                            <input type="checkbox" checked class="displayThumbnailCheckBoxEle"
+                                                onchange="toggleCheckBoxHideEle(document.querySelector('.displayThumbnailCheckBoxEle'),document.querySelector('.thumbnail'))">
+                                        </td>
+                                    </tr>
+                                    <tr id="audioThumbnail">
+                                        <td>Border</td>
+                                        <td>
+                                            <input type="range" id="audioThumbnailBorderEle" value="10" step="1"
+                                                min="0">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+        </table>
+        </table>
+        </table>
+    </div>
+    </div>
+    </div>
+    </td>
+    </tr>
+    </table>
+    </div>
+
+    <input type="checkbox" id="showControlsOut" class="hide">
+    <canvas></canvas>
+    <audio id="audio1"></audio>
+    <div class="audioPlayerDivEle">
+        <div class="audioPlayer">
+            <div class="thumbnail">
+                <img alt="thumbnail" class="thumbnailImg" src="./Asset/BG/bg_04.jpg">
+            </div>
+            <div class="timeAndProgressBar">
+                <span class="timeStart">00:00</span>
+                <div class="progressBar">
+                    <div class="seekBG"></div>
+                </div>
+                <span class="timeEnd">10:00</span>
+            </div>
+            <div class="playBtnAndSongName">
+                <span class="playBtn">&#10148;</span>
+                <!-- <span>&#9616;&#9616;</span> -->
+                <div class="songNameDiv">
+                    <span class="songNameSpan">Song Name</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const tabContain = document.querySelector(".tabContainer");
+        function tabOpen(event) {
+            tabContain.childNodes.forEach(e => {
+                if (e.classList) {
+                    if (e.classList.contains(event.className)) {
+                        e.classList.add("activeTab");
+                    } else {
+                        e.classList.remove("activeTab");
+                    }
+                }
+            });
+        }
+        function toggleElement(curEle, next) {
+            if (next) {
+                curEle.checked ? curEle.checked = false : curEle.checked = true;
+                curEle.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide")
+                curEle.parentElement.parentElement.parentElement.parentElement.parentElement.nextElementSibling.classList.remove("hide")
+            } else {
+                curEle.checked ? curEle.checked = false : curEle.checked = true;
+                curEle.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide")
+                curEle.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.classList.remove("hide")
+            }
+        }
+
+        function toggleHideEle(baseEle, hideEle, val) {
+            const bgColorType = baseEle;
+            const bgGradientRotate = hideEle;
+            if (bgColorType.value === val) {
+                bgGradientRotate.classList.add("hide");
+            } else {
+                bgGradientRotate.classList.remove("hide")
+            }
+        }
+        function toggleExceptHideEle(baseEle, hideEle, val) {
+            const bgColorType = baseEle;
+            const bgGradientRotate = hideEle;
+            if (bgColorType.value !== val) {
+                bgGradientRotate.classList.add("hide");
+            } else {
+                bgGradientRotate.classList.remove("hide")
+            }
+        }
+        function toggleCheckBoxHideEle(baseEle, hideEle) {
+            if (baseEle.checked) {
+                hideEle.classList.remove("hide")
+            } else {
+                hideEle.classList.add("hide")
+            }
+        }
+
+        function generateColorsEle(idName) {
+            const colorsTableDataEle = document.querySelector(idName);
+            colorsTableDataEle.innerHTML += `
+            <input type='color' id='barColorEle'/>
+            `
+        }
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
